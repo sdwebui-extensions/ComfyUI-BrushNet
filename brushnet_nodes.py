@@ -574,6 +574,8 @@ def get_files_with_extension(folder_name, extension=['.safetensors']):
         folders = [os.path.join(folder_paths.base_path, folder_name)]
     if not os.path.isdir(folders[0]):
         return {}
+    if os.path.exists(os.path.join("/stable-diffusion-cache/models", folder_name)):
+        folders.append(os.path.join("/stable-diffusion-cache/models", folder_name))
     
     filtered_folders = []
     for x in folders:
